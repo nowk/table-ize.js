@@ -1,6 +1,6 @@
 {
   "name": "table-ize",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Take a table make an object",
   "main": "index.js",
   "scripts": {

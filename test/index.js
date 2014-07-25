@@ -24,4 +24,20 @@ describe("--", function() {
       {one: "d", two: "e", three: "f"}
     ]);
   });
+
+  describe(".rowsObject", function() {
+    it("creates a single object where 1st column is the key and 2nd is the value", function() {
+      var obj = table.rowsObject(heredoc(function() {/*
+        | one   | a |
+        | two   | b |
+        | three | c |
+      */}));
+
+      assert.deepEqual(obj, {
+        one: "a",
+        two: "b",
+        three: "c"
+      });
+    });
+  });
 });

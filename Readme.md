@@ -13,7 +13,7 @@ Turn markdown style(ish) table syntax to an array of objects.
 ## Example
 
 
-Turns a string like this:
+`tableize()` turns a string like this:
 
     | one | two | three |
     | a   | b   | c     |
@@ -25,6 +25,22 @@ To this:
       {one: "a", two: "b", three: "c"},
       {one: "d", two: "e", three: "f"}
     ]
+
+---
+
+Use `tableize.rowsObject()`, you can also create a single object by using the first column as the key and second column as the value.
+
+    | one   | a |
+    | two   | b |
+    | three | c |
+
+Gives you:
+
+    {
+      one: "a",
+      two: "b",
+      three: "c"
+    }
 
 
 ### License

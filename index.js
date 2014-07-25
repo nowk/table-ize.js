@@ -13,6 +13,35 @@ module.exports = tableize;
  */
 
 function tableize(str) {
+  var lines = prepare(str);
+  var keys = lines.shift();
+  return build(keys, lines);
+}
+
+/*
+ * rowsObject returns a single object where the first column is used as the key and 
+ * the 2nd column is used as the key
+ *
+ * @param {String} str
+ * @return {Object}
+ */
+
+tableize.rowsObject = function(str) {
+  var lines = prepare(str);
+  return lines.reduce(function(memo, o) {
+    memo[o[0]] = o[1];
+    return memo;
+  }, {});
+};
+
+/*
+ * prepare prepares a string block into an array of rows of cells of strings
+ *
+ * @param {String} string
+ * @return {Array}
+ */
+
+function prepare(str) {
   var lines = str.split(/\n/);
   var i = 0;
   var len = lines.length;
@@ -20,8 +49,8 @@ function tableize(str) {
     var line = lines[i].split("|");
     lines[i] = normalize(line);
   }
-  var keys = lines.shift();
-  return build(keys, lines);
+
+  return lines;
 }
 
 /*
